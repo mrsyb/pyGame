@@ -1,0 +1,44 @@
+'''测试鼠标事件及键盘事件
+   键盘事件KEYDOWN 属性有 event.unicode---返回所按键的unicode码 注意，并不是所有系统都会返回unicode码
+                         event.key---返回所按的键，如 a,b,c
+                         event.mod---返回辅助键的状态，如shift,Alt键等
+          KEYUP 属性同KEYDOEWN事件
+   鼠标事件
+          MOUSEMOTION鼠标移动事件 属性有event.pos鼠标坐标
+                                      event.rel相较上一次移动的相对距离
+                                      event.buttons移动过程中鼠标按键的状态
+          MOUSEBUTTONDOWN 鼠标按下事件 属性有event.pos按下鼠标按键时的坐标
+                                           event.button按下的按键序号
+          MOUSEBUTTONUP 鼠标抬起事件   属性有 event.pos抬起鼠标按键时的坐标
+                                            event.button抬起的按键序号
+'''
+
+
+#框架---1.引入pygame库及sys库
+import  pygame,sys
+
+#框架---2.初始化initial（）及设置
+
+pygame.init()
+screen = pygame.display.set_mode((600,400))#模式设置函数 参数为一个二元元组，表示窗口宽和高
+pygame.display.set_caption("键盘响应事件")#标题设置
+
+#框架---3.获取事件并诼类响应
+    #框架3.4.均处于一个死循环
+while True:
+    for event in pygame.event.get():#pygame.event.get()--从事件栈中获取事件
+        if event.type == pygame.QUIT:
+            sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.unicode == "":
+                print("[KEYDOWN]:","#",event.key,event.mod)
+            else:
+                print("[KEYDOWN]:",event.unicode,event.key,event.mod)
+        elif event.type == pygame.MOUSEMOTION:
+            print("[MOUSEMOTION]:",event.pos,event.rel,event.buttons)
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print("[MOUSEBUTTONDOWN]:",event.button,event.pos)
+        elif event.type == pygame.MOUSEBUTTONUP:
+            print("[MOUSEBUTTONUP]:",event.button,event.pos)
+#框架---4.刷新屏幕
+    pygame.display.update()#刷新屏幕  update（）---只是更新有变化的部分
