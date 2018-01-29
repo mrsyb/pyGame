@@ -1,8 +1,9 @@
-'''V5壁球小游戏伸缩版_图标版_最小化感知版_鼠标型
+'''V5壁球小游戏伸缩版_节奏版_图标版_最小化感知版_鼠标型
    添加Esc按键响应 line 51
    添加窗体更改事件响应实现窗体调节 line 57
    添加窗体小图标 line 28
    感知最小化，最小化后暂停移动 line 70
+   按F1实现全屏
    鼠标型功能定义：
                 通过鼠标左键摆放壁球，按键按下时壁球停止移动，左键释放时重新于鼠标处绘制壁球。按下右键下并移动时，壁球跟随移动。
 
@@ -53,6 +54,9 @@ while True:
                 speed[1] = speed[1] + 1 if speed[1] > 0 else speed[1] - 1
             elif event.key == pygame.K_DOWN:
                 speed[1] = speed[1] if speed[1] == 0 else (abs(speed[1]) - 1) * int(speed[1] / abs(speed[1]))
+             # 添加按键响应事件，通过F1键控制壁球游戏全屏，
+            elif event.key == pygame.K_F1:
+                screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
             elif event.key == pygame.K_ESCAPE:
                 sys.exit()
         #添加窗体大小更改事件响应

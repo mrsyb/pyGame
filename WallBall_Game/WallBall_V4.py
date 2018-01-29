@@ -3,6 +3,7 @@
    添加窗体更改事件响应实现窗体调节 line 57
    添加窗体小图标 line 28
    感知最小化，最小化后暂停移动 line 70
+   按F1实现全屏
 '''
 
 # 框架---1.引入pygame库及sys库
@@ -22,7 +23,7 @@ screen = pygame.display.set_mode(size,pygame.NOFRAME)#无边框模式
 '''
 
 screen = pygame.display.set_mode(size,pygame.RESIZABLE)  # 模式设置函数 参数为一个二元元组，表示窗口宽和高--pygame.RESIZABLE为屏幕可调模式
-pygame.display.set_caption("pygame壁球_伸缩版_图标版_最小化感知版")  # 标题设置
+pygame.display.set_caption("pygame壁球_节奏型_伸缩版_图标版_最小化感知版")  # 标题设置
 ball = pygame.image.load("turtle.jpg")  # 载入一个图片表示为一个surface对象 pygame使用内部定义的surface对象表示所有载入的图像，其中。get_rect()方法返回一个覆盖图像的矩形Rect对象
 ballrect = ball.get_rect()  # 利用get_rect()返回相应的矩形对象
 iconimage = pygame.image.load("life.png")#导入图标图片
@@ -48,6 +49,9 @@ while True:
                 speed[1] = speed[1] + 1 if speed[1] > 0 else speed[1] - 1
             elif event.key == pygame.K_DOWN:
                 speed[1] = speed[1] if speed[1] == 0 else (abs(speed[1]) - 1) * int(speed[1] / abs(speed[1]))
+            # 添加按键响应事件，通过F1键控制壁球游戏全屏，
+            elif event.key == pygame.K_F1:
+                screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
             elif event.key == pygame.K_ESCAPE:
                 sys.exit()
         #添加窗体大小更改事件响应
