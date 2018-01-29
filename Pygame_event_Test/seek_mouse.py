@@ -1,8 +1,8 @@
 # Steering Behavior Examples
 # Seek & Approach
-# KidsCanCode 2016
 """本例主要解决自动寻找目标和接近目标之后的处理过程，
     主要原理是向量的运算。
+    按V显示当前速度和所需速度
 """
 
 import pygame as pg
