@@ -10,7 +10,7 @@
                 添加按键响应事件，按“+”放大壁球，按“-”缩小壁球，按“空格”恢复原状，扩大和缩小的比例范围为“0.5-2.0”
 '''
 """此处可以用这种方式实现同一程序不同精灵的不同刷新速度的要求
-last_update = pygame.time.get_ticks()
+last_update = pygame.time.get_ticks()#或者last_update = 0
 now = pygame.time.get_ticks()
         if now - last_update > 1000:
             last_update = now
